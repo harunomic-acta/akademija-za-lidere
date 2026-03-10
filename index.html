@@ -1,0 +1,2971 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akademija za lidere – Consultor | Enisa Selmanović-Salkić</title>
+  <meta name="description" content="Jedini program u regiji koji ti daje prostor, znanje i sistem da prestaš raditi sve sam/a – i počneš voditi s jasnoćom, snagom i povjerenjem. Sljedeća generacija kreće oktobar 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #1a2744;
+      --gold: #D4AF37;
+      --white: #FFFFFF;
+      --light-bg: #f8f9fc;
+      --dark-footer: #111827;
+      --gold-hover: #b8961e;
+      --text-muted: rgba(255,255,255,0.6);
+      --transition: 0.3s ease;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      color: #1a2744;
+      background: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Bitter', serif;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== URGENCY BAR ===== */
+    #urgency-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--gold);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      gap: 12px;
+    }
+
+    #urgency-bar.hidden {
+      display: none;
+    }
+
+    #urgency-bar .urgency-text {
+      text-align: center;
+      flex: 1;
+    }
+
+    #urgency-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--primary);
+      padding: 0 4px;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: background var(--transition);
+      flex-shrink: 0;
+    }
+
+    #urgency-close:hover {
+      background: rgba(0,0,0,0.1);
+    }
+
+    /* ===== STICKY MINI HEADER ===== */
+    #mini-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    #mini-header.visible {
+      transform: translateY(0);
+    }
+
+    #mini-header .mini-logo {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    #mini-header .mini-logo span {
+      color: var(--gold);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--primary);
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      display: inline-block;
+      min-height: 44px;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background var(--transition), transform var(--transition);
+      display: inline-block;
+      min-height: 44px;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #253460;
+      transform: translateY(-1px);
+    }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ===== HERO SECTION ===== */
+    #hero {
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 40px 80px;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('hero-bg.jpg') center center / cover no-repeat;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(26,39,68,0.85) 0%,
+        rgba(26,39,68,0.55) 60%,
+        rgba(26,39,68,0.25) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: rgba(212,175,55,0.15);
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(212,175,55,0.3);
+      margin-bottom: 28px;
+    }
+
+    #hero h1 {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: clamp(38px, 6vw, 60px);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 680px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .hero-stats span {
+      color: var(--gold);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .hero-stats .divider {
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .hero-testimonial {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-left: 3px solid var(--gold);
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: left;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .hero-testimonial .quote-icon {
+      font-size: 1.8rem;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 10px;
+      font-family: Georgia, serif;
+      letter-spacing: -2px;
+    }
+
+    .hero-testimonial p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.92);
+      font-style: italic;
+      margin-bottom: 14px;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .hero-testimonial .attribution {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      font-style: normal;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-hero {
+      background: var(--gold);
+      color: var(--primary);
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 18px 40px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      min-height: 56px;
+    }
+
+    .btn-hero:hover {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212,175,55,0.5);
+    }
+
+    .hero-microcopy {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    .hero-secondary-link {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 2px;
+      transition: color var(--transition), border-color var(--transition);
+      cursor: pointer;
+    }
+
+    .hero-secondary-link:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    /* ===== SECTION WRAPPER ===== */
+    .section-wrapper {
+      padding: 90px 40px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ===== IS THIS FOR YOU ===== */
+    #for-you {
+      background: var(--white);
+    }
+
+    #for-you .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    #for-you h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--primary);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .pain-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 740px;
+      margin: 0 auto 48px;
+    }
+
+    .pain-card {
+      background: var(--light-bg);
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-weight: 500;
+      line-height: 1.5;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .pain-card:hover {
+      box-shadow: 0 4px 16px rgba(26,39,68,0.1);
+      transform: translateX(4px);
+    }
+
+    .pain-card::before {
+      content: '"';
+      display: inline;
+      color: var(--gold);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .pain-card::after {
+      content: '"';
+      display: inline;
+      color: var(--gold);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .for-you-closer {
+      text-align: center;
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    /* ===== BEFORE / AFTER ===== */
+    #before-after {
+      background: var(--light-bg);
+    }
+
+    #before-after .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    #before-after h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ba-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .ba-card-header {
+      padding: 20px 28px;
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .ba-card-header.before {
+      background: #e8eaef;
+      color: #5a6580;
+    }
+
+    .ba-card-header.after {
+      background: var(--gold);
+      color: var(--primary);
+    }
+
+    .ba-card-body {
+      background: var(--white);
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ba-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--primary);
+    }
+
+    .ba-item .icon {
+      flex-shrink: 0;
+      font-size: 1rem;
+      margin-top: 1px;
+    }
+
+    .ba-item .icon.cross {
+      color: #d94f4f;
+    }
+
+    .ba-item .icon.check {
+      color: #22a854;
+    }
+
+    /* ===== ASSESSMENT ===== */
+    #assessment {
+      background: var(--primary);
+    }
+
+    #assessment .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    #assessment h2 {
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--white);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .assessment-subtitle {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .assessment-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 44px 48px;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .progress-wrap {
+      margin-bottom: 28px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .progress-track {
+      height: 6px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 99px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    .question-block {
+      display: none;
+    }
+
+    .question-block.active {
+      display: block;
+    }
+
+    .q-category {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .q-text {
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--white);
+      line-height: 1.45;
+      margin-bottom: 28px;
+    }
+
+    .rating-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .rating-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .rating-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .rating-item:hover .rating-circle {
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.15);
+      color: var(--gold);
+    }
+
+    .rating-item.selected .rating-circle {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--primary);
+      transform: scale(1.1);
+      box-shadow: 0 4px 14px rgba(212,175,55,0.45);
+    }
+
+    .rating-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+
+    .rating-item.selected .rating-label {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .assess-next-btn {
+      display: none;
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--primary);
+      color: var(--white);
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .assess-next-btn:hover {
+      background: #253460;
+    }
+
+    /* Results */
+    #assessment-results {
+      display: none;
+    }
+
+    #assessment-results .result-title {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    #radarCanvas {
+      display: block;
+      margin: 0 auto 28px;
+      max-width: 100%;
+    }
+
+    .competency-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .competency-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+    }
+
+    .comp-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .comp-score-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .comp-score {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .comp-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .badge-low {
+      background: rgba(220,53,69,0.2);
+      color: #ff8a8a;
+      border: 1px solid rgba(220,53,69,0.3);
+    }
+
+    .badge-mid {
+      background: rgba(212,175,55,0.15);
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+
+    .badge-high {
+      background: rgba(40,167,69,0.15);
+      color: #6fcf97;
+      border: 1px solid rgba(40,167,69,0.3);
+    }
+
+    .next-step-card {
+      background: var(--gold);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+
+    .next-step-card h4 {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .next-step-card p {
+      font-size: 0.95rem;
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    /* ===== STA DOBIJAS ===== */
+    #sta-dobijas {
+      background: var(--white);
+    }
+
+    #sta-dobijas .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    #sta-dobijas h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .deliverable-card {
+      background: var(--light-bg);
+      border-radius: 12px;
+      padding: 30px 26px;
+      border-top: 3px solid var(--gold);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .deliverable-card:hover {
+      box-shadow: 0 8px 28px rgba(26,39,68,0.12);
+      transform: translateY(-3px);
+    }
+
+    .deliverable-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .deliverable-card h3 {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .deliverable-card p {
+      font-size: 0.9rem;
+      color: #4a5568;
+      line-height: 1.6;
+    }
+
+    /* ===== MODULI TIMELINE ===== */
+    #moduli {
+      background: var(--light-bg);
+    }
+
+    #moduli .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    #moduli h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 52px;
+      padding-left: 44px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -38px;
+      top: 4px;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 0 3px var(--gold);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: #4a5568;
+      line-height: 1.6;
+    }
+
+    .timeline-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .timeline-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary);
+    }
+
+    /* ===== O ENISI ===== */
+    #o-enisi {
+      background: var(--primary);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .enisa-frame {
+      display: grid;
+      grid-template-columns: 1fr 400px 1fr;
+      align-items: center;
+      min-height: 620px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* photo column */
+    .enisa-photo-wrap {
+      position: relative;
+      height: 620px;
+    }
+
+    .enisa-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    /* seamless left+right fade to primary color */
+    .enisa-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,  var(--primary) 0%,   transparent 30%, transparent 70%,  var(--primary) 100%),
+        linear-gradient(to bottom, transparent 0%, transparent 75%, var(--primary) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* left text column */
+    .enisa-col-left {
+      background: var(--primary);
+      padding: 60px 48px 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .enisa-col-left .section-label {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .enisa-name {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      color: var(--white);
+      line-height: 1.15;
+    }
+
+    .enisa-title {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* right text column */
+    .enisa-col-right {
+      background: var(--primary);
+      padding: 60px 40px 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      height: 100%;
+    }
+
+    .enisa-bio {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.93rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .enisa-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .enisa-stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .enisa-stat-number {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .enisa-stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials {
+      background: var(--primary);
+      padding: 0;
+    }
+
+    #testimonials .section-wrapper {
+      padding: 0;
+    }
+
+    .testi-stage {
+      position: relative;
+      min-height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 80px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testi-top-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+
+    .testi-top-label .section-label {
+      color: var(--gold);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .testi-slide {
+      display: none;
+      animation: testiFade 0.45s ease;
+    }
+
+    .testi-slide.active {
+      display: block;
+    }
+
+    @keyframes testiFade {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .testi-body {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 48px;
+      align-items: start;
+    }
+
+    .testi-num {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: clamp(80px, 10vw, 130px);
+      color: rgba(255,255,255,0.08);
+      line-height: 1;
+      user-select: none;
+      margin-top: -10px;
+    }
+
+    .testi-content {
+      padding-top: 4px;
+    }
+
+    .testi-quote {
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.55;
+      margin-bottom: 36px;
+      font-style: normal;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testi-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.25);
+      border: 2px solid rgba(212,175,55,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .testi-author-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .testi-author-role {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* Bottom bar */
+    .testi-footer {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      right: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .testi-line-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .testi-line {
+      width: 60px;
+      height: 2px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .testi-counter {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    .testi-counter span.current {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .testi-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .testi-nav button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testi-nav button:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(212,175,55,0.08);
+    }
+
+    /* ===== CIJENA NEAKTIVNOSTI ===== */
+    #cijena-neaktivnosti {
+      background: var(--primary);
+      text-align: center;
+    }
+
+    .inaction-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .inaction-quote-icon {
+      font-size: 4rem;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      line-height: 0.7;
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    .inaction-quote {
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 36px;
+    }
+
+    .inaction-divider {
+      width: 80px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 0 auto 32px;
+    }
+
+    .inaction-price {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 12px;
+    }
+
+    .inaction-note {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* ===== CIJENA / PRICING ===== */
+    #cijena {
+      background: var(--white);
+    }
+
+    #cijena .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    #cijena h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 28px;
+      align-items: start;
+    }
+
+    .price-card {
+      border-radius: 14px;
+      overflow: visible;
+      border: 2px solid #e5e8f0;
+      padding: 32px 28px;
+      text-align: center;
+      position: relative;
+      background: var(--white);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .price-card:hover {
+      box-shadow: 0 8px 28px rgba(26,39,68,0.1);
+    }
+
+    .price-card.featured {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(26,39,68,0.3);
+    }
+
+    .price-card.featured:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 28px 60px rgba(26,39,68,0.35);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--primary);
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .price-card-name {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .price-card.featured .price-card-name {
+      color: var(--white);
+    }
+
+    .price-card-valid {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .price-card.featured .price-card-valid {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .price-amount {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .price-card.featured .price-amount {
+      color: var(--gold);
+    }
+
+    .price-currency {
+      font-size: 1rem;
+    }
+
+    .price-vat {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+
+    .price-card.featured .price-vat {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .price-features li {
+      font-size: 0.88rem;
+      color: #374151;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .price-features li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .price-card.featured .price-features li {
+      color: rgba(255,255,255,0.78);
+    }
+
+    .price-note-below {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ===== FORMA ===== */
+    #forma {
+      background: var(--primary);
+    }
+
+    #forma .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    #forma h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .forma-subtitle {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+    }
+
+    .forma-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 44px 48px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group label .required {
+      color: var(--gold);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      min-height: 44px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: var(--gold);
+      color: var(--primary);
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      min-height: 56px;
+    }
+
+    .btn-submit:hover {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(212,175,55,0.45);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px 20px;
+    }
+
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .form-success p {
+      font-family: 'Bitter', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .forma-contact {
+      text-align: center;
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .forma-contact a {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .forma-contact a:hover {
+      color: var(--gold);
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-footer);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-link {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      text-decoration: underline;
+      margin-bottom: 12px;
+      display: inline-block;
+      transition: color var(--transition);
+    }
+
+    .footer-link:hover {
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-privacy {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    #mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 998;
+      padding: 12px 20px;
+      background: var(--gold);
+    }
+
+    #mobile-cta a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      background: var(--primary);
+      color: var(--white);
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      transition: background var(--transition);
+      text-decoration: none;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #mobile-cta a:hover {
+      background: #253460;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      #mini-header {
+        padding: 12px 20px;
+      }
+
+      #hero {
+        padding: 70px 20px 60px;
+        min-height: auto;
+      }
+
+      .section-wrapper {
+        padding: 60px 20px;
+      }
+
+      .ba-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .assessment-card {
+        padding: 28px 20px;
+      }
+
+      .deliverables-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .enisa-frame {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .enisa-photo-wrap {
+        height: 400px;
+        order: -1;
+      }
+
+      .enisa-photo-wrap::before {
+        background:
+          linear-gradient(to bottom, var(--primary) 0%, transparent 15%, transparent 75%, var(--primary) 100%);
+      }
+
+      .enisa-col-left,
+      .enisa-col-right {
+        padding: 32px 24px;
+        height: auto;
+      }
+
+      .enisa-col-left {
+        order: 0;
+        text-align: center;
+        align-items: center;
+      }
+
+      .enisa-col-right {
+        order: 1;
+      }
+
+      .enisa-stats {
+        gap: 12px;
+      }
+
+      .testi-stage {
+        padding: 60px 24px 100px;
+      }
+      .testi-footer {
+        left: 24px;
+        right: 24px;
+      }
+      .testi-body {
+        grid-template-columns: 80px 1fr;
+        gap: 0 24px;
+      }
+      .testi-num {
+        font-size: 64px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+      }
+
+      .price-card.featured {
+        transform: none;
+        order: -1;
+      }
+
+      .price-card.featured:hover {
+        transform: translateY(-4px);
+      }
+
+      .forma-card {
+        padding: 28px 20px;
+      }
+
+      footer {
+        padding: 32px 20px;
+      }
+
+      #mobile-cta {
+        display: block;
+      }
+
+      #mobile-cta.hidden {
+        display: none;
+      }
+
+      body {
+        padding-bottom: 72px;
+      }
+
+      .rating-circle {
+        width: 46px;
+        height: 46px;
+        font-size: 1rem;
+      }
+
+      .rating-row {
+        gap: 7px;
+      }
+
+      .hero-stats {
+        gap: 10px;
+      }
+
+      .hero-stats span {
+        font-size: 0.8rem;
+      }
+
+      .timeline-checks {
+        gap: 12px;
+      }
+
+      .timeline-check {
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #hero h1 {
+        font-size: 30px;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .btn-hero {
+        padding: 15px 28px;
+        font-size: 0.9rem;
+      }
+
+      .assessment-card {
+        padding: 22px 16px;
+      }
+
+      .q-text {
+        font-size: 1rem;
+      }
+
+      .enisa-name {
+        font-size: 1.5rem;
+      }
+
+      .enisa-avatar {
+        width: 200px;
+        height: 240px;
+        font-size: 3rem;
+      }
+
+      .hero-stats .divider {
+        display: none;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .deliverables-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* testimonials handled by slider */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== URGENCY BAR ===== -->
+  <div id="urgency-bar">
+    <div class="urgency-text">⚡ Sljedeća generacija kreće oktobar 2026. — Mjesta su ograničena.</div>
+    <button id="urgency-close" aria-label="Zatvori obavijest">✕</button>
+  </div>
+
+  <!-- ===== STICKY MINI HEADER ===== -->
+  <header id="mini-header">
+    <div class="mini-logo">Consul<span>tor</span></div>
+    <a href="#forma" class="btn-gold">PRIJAVI SE →</a>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-inner fade-in">
+      <span class="hero-label">Akademija za lidere · Consultor</span>
+      <h1>Kad svi gledaju u tebe – a ti više ne znaš odakle da kreneš.</h1>
+      <p class="hero-subtitle">Jedini program u regiji koji ti daje prostor, znanje i sistem da prestaš raditi sve sam/a – i počneš voditi s jasnoćom, snagom i povjerenjem.</p>
+
+      <div class="hero-stats">
+        <span>50+ lidera obučeno</span>
+        <div class="divider"></div>
+        <span>6 kompanija preporučuje</span>
+        <div class="divider"></div>
+        <span>20 godina iskustva</span>
+      </div>
+
+      <div class="hero-testimonial">
+        <span class="quote-icon">"</span>
+        <p>Moduli su prezabavni – otišli smo sa velikim znanjem i novom perspektivom.</p>
+        <span class="attribution">— Amar Helvida, Telemach d.o.o. Sarajevo</span>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#assessment" class="btn-hero">PROVJERI GDJE SI KAO LIDER →</a>
+        <p class="hero-microcopy">Besplatan self-assessment. Traje 3 minute.</p>
+        <a class="hero-secondary-link" href="#forma">Prijavi se direktno ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JE LI OVO ZA TEBE? ===== -->
+  <section id="for-you" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <span class="section-label">Prepoznaješ li se?</span>
+        <h2>Ovo su misli koje poznaju pravi lideri.</h2>
+      </div>
+      <div class="pain-cards">
+        <div class="pain-card fade-in">Ljudi te pitaju, čekaju tvoju odluku – a u glavi gori deset stvari odjednom</div>
+        <div class="pain-card fade-in">Pokušavaš držati sve pod kontrolom, ali zapravo samo preživljavaš dan</div>
+        <div class="pain-card fade-in">Znaš da možeš bolje, ali ne znaš koji korak mijenja igru</div>
+        <div class="pain-card fade-in">Kažeš nešto – ali osjećaš da te niko nije zaista čuo</div>
+        <div class="pain-card fade-in">Vodiš tim, ali nisi siguran/na vodiš li ga u pravom smjeru</div>
+      </div>
+      <p class="for-you-closer fade-in">Akademija za lidere je napravljena tačno za tebe.</p>
+    </div>
+  </section>
+
+  <!-- ===== BEFORE / AFTER ===== -->
+  <section id="before-after" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <span class="section-label">Šta transformacija izgleda</span>
+        <h2>Akademija mijenja način na koji vodiš</h2>
+      </div>
+      <div class="ba-grid">
+        <div class="ba-card fade-in">
+          <div class="ba-card-header before">Danas</div>
+          <div class="ba-card-body">
+            <div class="ba-item"><span class="icon cross">✗</span><span>Reaguješ umjesto da vodiš</span></div>
+            <div class="ba-item"><span class="icon cross">✗</span><span>Tim te iscrpljuje umjesto da te osnažuje</span></div>
+            <div class="ba-item"><span class="icon cross">✗</span><span>Odluke donosiš na osnovu osjećaja, ne sistema</span></div>
+            <div class="ba-item"><span class="icon cross">✗</span><span>Svaki dan je gašenje požara</span></div>
+            <div class="ba-item"><span class="icon cross">✗</span><span>Nisi siguran/na vodiš li ljude ili upravljaš zadacima</span></div>
+          </div>
+        </div>
+        <div class="ba-card fade-in">
+          <div class="ba-card-header after">Nakon Akademije</div>
+          <div class="ba-card-body">
+            <div class="ba-item"><span class="icon check">✓</span><span>Vodiš proaktivno, s jasnom vizijom</span></div>
+            <div class="ba-item"><span class="icon check">✓</span><span>Tim raste zahvaljujući tebi – ne uprkos tebi</span></div>
+            <div class="ba-item"><span class="icon check">✓</span><span>Imaš sistem za donošenje odluka pod pritiskom</span></div>
+            <div class="ba-item"><span class="icon check">✓</span><span>Znaš kako organizovati i delegirati – i to zaista radiš</span></div>
+            <div class="ba-item"><span class="icon check">✓</span><span>Osjećaš se kao lider – ne samo u tituli, već u djelovanju</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ASSESSMENT ===== -->
+  <section id="assessment" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <span class="section-label">Besplatni self-assessment</span>
+        <h2>Provjeri gdje si kao lider</h2>
+        <p class="assessment-subtitle">7 pitanja. 3 minute. Vidiš tačno gdje si jak/a – i gdje imaš prostor za rast.</p>
+      </div>
+
+      <div class="assessment-card fade-in">
+        <!-- Progress -->
+        <div class="progress-wrap" id="progress-wrap">
+          <div class="progress-label">
+            <span id="q-counter">Pitanje 1 od 7</span>
+            <span id="q-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- Questions -->
+        <div id="questions-container">
+
+          <div class="question-block active" data-q="1">
+            <div class="q-category">Komunikacija</div>
+            <div class="q-text">Koliko uspješno prenosiš poruke svom timu – tako da budu jasno razumljene i prihvaćene?</div>
+            <div class="rating-row" data-q="1">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+          </div>
+
+          <div class="question-block" data-q="2">
+            <div class="q-category">Timski rad</div>
+            <div class="q-text">Koliko aktivno gradiš povjerenje i suradnju unutar svog tima?</div>
+            <div class="rating-row" data-q="2">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+          </div>
+
+          <div class="question-block" data-q="3">
+            <div class="q-category">Emocionalna inteligencija</div>
+            <div class="q-text">Koliko dobro prepoznaješ i upravljaš svojim emocijama pod pritiskom?</div>
+            <div class="rating-row" data-q="3">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+          </div>
+
+          <div class="question-block" data-q="4">
+            <div class="q-category">Upravljanje vremenom</div>
+            <div class="q-text">Koliko efikasno organizuješ prioritete i delegiraš zadatke svom timu?</div>
+            <div class="rating-row" data-q="4">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+          </div>
+
+          <div class="question-block" data-q="5">
+            <div class="q-category">Rješavanje problema</div>
+            <div class="q-text">Koliko strukturirano pristupaš donošenju odluka u kriznim situacijama?</div>
+            <div class="rating-row" data-q="5">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+          </div>
+
+          <div class="question-block" data-q="6">
+            <div class="q-category">Feedback kultura</div>
+            <div class="q-text">Koliko redovno i konstruktivno daješ i primaš povratne informacije?</div>
+            <div class="rating-row" data-q="6">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+          </div>
+
+          <div class="question-block" data-q="7">
+            <div class="q-category">Razvoj tima</div>
+            <div class="q-text">Koliko aktivno radiš na rastu i razvoju članova svog tima?</div>
+            <div class="rating-row" data-q="7">
+              <div class="rating-item" data-val="1"><div class="rating-circle">1</div><div class="rating-label">Rijetko</div></div>
+              <div class="rating-item" data-val="2"><div class="rating-circle">2</div><div class="rating-label">Ponekad</div></div>
+              <div class="rating-item" data-val="3"><div class="rating-circle">3</div><div class="rating-label">Često</div></div>
+              <div class="rating-item" data-val="4"><div class="rating-circle">4</div><div class="rating-label">Redovno</div></div>
+              <div class="rating-item" data-val="5"><div class="rating-circle">5</div><div class="rating-label">Uvijek</div></div>
+            </div>
+            <button class="assess-next-btn" id="show-results-btn" style="display:none;">VIDI MOJ REZULTAT →</button>
+          </div>
+
+        </div>
+
+        <!-- Results -->
+        <div id="assessment-results">
+          <div class="result-title">Tvoj liderski profil</div>
+          <canvas id="radarCanvas" width="360" height="360"></canvas>
+          <div class="competency-list" id="competency-list"></div>
+          <div class="next-step-card" id="next-step-card">
+            <h4>Tvoj sljedeći korak:</h4>
+            <p id="next-step-text"></p>
+          </div>
+          <a href="#forma" class="btn-hero" style="display:block;text-align:center;width:100%;">PRIJAVI SE I POČNI RAZVOJ →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STA DOBIJAS ===== -->
+  <section id="sta-dobijas" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <span class="section-label">Šta dobijaš</span>
+        <h2>Sve što trebaš da postaneš lider kojeg tim zaslužuje</h2>
+      </div>
+      <div class="deliverables-grid">
+        <div class="deliverable-card fade-in">
+          <div class="deliverable-icon">📊</div>
+          <h3>Harrison Assessment procjena</h3>
+          <p>Individualna procjena tvojih liderskih kompetencija po metodologiji koja se koristi u svjetskim kompanijama + razvojna sesija s Enisom</p>
+        </div>
+        <div class="deliverable-card fade-in">
+          <div class="deliverable-icon">📚</div>
+          <h3>Autorska knjiga</h3>
+          <p>"Sve što trebate znati o vođenju pobjedničkih timova" — jedina ovakva knjiga objavljena u Bosni i Hercegovini</p>
+        </div>
+        <div class="deliverable-card fade-in">
+          <div class="deliverable-icon">👥</div>
+          <h3>Mala zatvorena grupa</h3>
+          <p>Intenzivan rad, iskrena razmjena iskustava, kontakti koji ostaju dugo nakon programa</p>
+        </div>
+        <div class="deliverable-card fade-in">
+          <div class="deliverable-icon">🎯</div>
+          <h3>Strategija tvog tima</h3>
+          <p>Kreiraš i prezentiraš vlastitu strategiju na završnom Graduation danu — odlaziš s planom koji odmah primjenjuješ</p>
+        </div>
+        <div class="deliverable-card fade-in">
+          <div class="deliverable-icon">🏆</div>
+          <h3>Diploma po završetku</h3>
+          <p>Zvanična potvrda završenog programa od kompanije Consultor</p>
+        </div>
+        <div class="deliverable-card fade-in">
+          <div class="deliverable-icon">🔗</div>
+          <h3>Alumni mreža</h3>
+          <p>Ni nakon programa nisi sam/a — pristup zajednici bivših polaznika</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MODULI TIMELINE ===== -->
+  <section id="moduli" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <span class="section-label">Program</span>
+        <h2>5 modula koji odgovaraju na ono što te zaista čeka u praksi</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">17. oktobar</div>
+          <div class="timeline-title">Modul 1 — Uloga lidera</div>
+          <div class="timeline-desc">Osvještavanje uloge lidera, stilovi liderstva, situacijsko vođenje, tipovi ličnosti, gradnja i preuzimanje tima</div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">30. oktobar</div>
+          <div class="timeline-title">Modul 2 — Konceptualne vještine</div>
+          <div class="timeline-desc">Planiranje i implementacija plana, upravljanje rizicima i krizama, donošenje odluka, rješavanje problema, delegiranje</div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">14. novembar</div>
+          <div class="timeline-title">Modul 3 — Interpersonalne vještine</div>
+          <div class="timeline-desc">Emocionalna inteligencija, motivacija tima, feedback kultura, razvoj tima kroz ciljeve učinka i razvoja</div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">28. novembar</div>
+          <div class="timeline-title">Modul 4 — Organizacija i komunikacija</div>
+          <div class="timeline-desc">Upravljanje vremenom, efikasni sastanci, projektni menadžment, prezentacijske vještine, rješavanje konflikata</div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12. decembar</div>
+          <div class="timeline-title">Modul 5 — Graduation Day 🎓</div>
+          <div class="timeline-desc">Prezentacija završnog rada — tvoja strategija za tim, diploma, alumni mreža</div>
+        </div>
+      </div>
+
+      <div class="timeline-checks fade-in">
+        <div class="timeline-check">✅ Uživo u Sarajevu</div>
+        <div class="timeline-check">✅ Svake 2 sedmice</div>
+        <div class="timeline-check">✅ Konkretni alati</div>
+        <div class="timeline-check">✅ Individualna procjena</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O ENISI ===== -->
+  <section id="o-enisi">
+    <div class="enisa-frame fade-in">
+
+      <!-- LEFT: name + label -->
+      <div class="enisa-col-left">
+        <span class="section-label">Vodič kroz Akademiju</span>
+        <div class="enisa-name">Enisa<br>Selmanović-<br>Salkić</div>
+        <div class="enisa-title">Osnivačica Consultora<br>Executive Coach · Autorica</div>
+      </div>
+
+      <!-- CENTER: photo with fade edges -->
+      <div class="enisa-photo-wrap">
+        <img src="enisa.jpg" alt="Enisa Selmanović-Salkić">
+      </div>
+
+      <!-- RIGHT: bio + stats + cta -->
+      <div class="enisa-col-right">
+        <p class="enisa-bio">Dvije decenije pomaže timovima i liderima da rade pametnije, mirnije i efikasnije. Diplomirala na Pravnom fakultetu u Sarajevu, magistrirala na CIMA (UK). Certificirani Harrison Assessments stručnjak i autorica prve BiH knjige o liderstvu.</p>
+        <div class="enisa-stats">
+          <div class="enisa-stat">
+            <span class="enisa-stat-number">20+</span>
+            <span class="enisa-stat-label">Godina iskustva</span>
+          </div>
+          <div class="enisa-stat">
+            <span class="enisa-stat-number">100+</span>
+            <span class="enisa-stat-label">Menadžera</span>
+          </div>
+          <div class="enisa-stat">
+            <span class="enisa-stat-number">#1</span>
+            <span class="enisa-stat-label">Knjiga BiH</span>
+          </div>
+        </div>
+        <a href="#forma" class="btn-primary">PRIJAVI SE →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials">
+    <div class="testi-stage fade-in">
+
+      <div class="testi-top-label">
+        <span class="section-label">Iskustva polaznika</span>
+      </div>
+
+      <!-- Slide 1 -->
+      <div class="testi-slide active">
+        <div class="testi-body">
+          <div class="testi-num">01</div>
+          <div class="testi-content">
+            <p class="testi-quote">Consultor Akademija za lidere je bila pravi lijek za naše tegobe. I što je najbolje, djelovala je! Menadžeri su jači i iskusniji u primjeni alata i metoda koje će nas odvesti do cilja!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">VK</div>
+              <div>
+                <div class="testi-author-name">Vesna Krišto</div>
+                <div class="testi-author-role">COO &nbsp;/&nbsp; B-Krug d.o.o. Livno</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="testi-slide">
+        <div class="testi-body">
+          <div class="testi-num">02</div>
+          <div class="testi-content">
+            <p class="testi-quote">Dobili smo zaista korisne i praktične alate koje možemo odmah primijeniti. Iskreno preporučujem Akademiju svima koji žele razviti svoje liderske vještine.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">KĆ</div>
+              <div>
+                <div class="testi-author-name">Katarina Ćurdo</div>
+                <div class="testi-author-role">CFO &nbsp;/&nbsp; Planet d.o.o. Posušje</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="testi-slide">
+        <div class="testi-body">
+          <div class="testi-num">03</div>
+          <div class="testi-content">
+            <p class="testi-quote">Moduli su prezabavni – držiš pažnju cijeli dan. Odišeš pozitivnom energijom, jako si fleksibilna. Otišli smo sa velikim znanjem – hvala na svim smjernicama i životnim lekcijama!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AH</div>
+              <div>
+                <div class="testi-author-name">Amar Helvida</div>
+                <div class="testi-author-role">Vođa tima za podršku &nbsp;/&nbsp; Telemach d.o.o. Sarajevo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="testi-slide">
+        <div class="testi-body">
+          <div class="testi-num">04</div>
+          <div class="testi-content">
+            <p class="testi-quote">Izuzetno korisno iskustvo! Inspirativan predavač i interaktivne radionice pomogle su mi da se usavršim, dok je umrežavanje sa kolegama obogatilo moje iskustvo.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AJ</div>
+              <div>
+                <div class="testi-author-name">Amel Jusufspahić</div>
+                <div class="testi-author-role">Production Manager &nbsp;/&nbsp; Nucad d.o.o. Bugojno</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="testi-slide">
+        <div class="testi-body">
+          <div class="testi-num">05</div>
+          <div class="testi-content">
+            <p class="testi-quote">Iznenađujuće konkretno i korisno! Akademija za lidere mi je dala jasne smjernice kako da ostvarimo naše kompanijske ciljeve.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">DH</div>
+              <div>
+                <div class="testi-author-name">Denisa Halilagić</div>
+                <div class="testi-author-role">CEO &nbsp;/&nbsp; Axatech d.o.o. Sarajevo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="testi-slide">
+        <div class="testi-body">
+          <div class="testi-num">06</div>
+          <div class="testi-content">
+            <p class="testi-quote">Bilo je extra super fantastično! Tvoja energija, zarazno odlična ekipa, sadržaj konkretan i inspirativan. Svako predavanje mi je dalo novu perspektivu i dozu motivacije!</p>
+            <div class="testi-author">
+              <div class="testi-avatar">PB</div>
+              <div>
+                <div class="testi-author-name">Petar Berat</div>
+                <div class="testi-author-role">Voditelj sektora &nbsp;/&nbsp; ABV Sistem d.o.o. Trebinje</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer bar -->
+      <div class="testi-footer">
+        <div class="testi-line-wrap">
+          <div class="testi-line"></div>
+          <div class="testi-counter"><span class="current">01</span> / 06</div>
+        </div>
+        <div class="testi-nav">
+          <button id="testi-prev" aria-label="Prethodno">&#8592;</button>
+          <button id="testi-next" aria-label="Sljedeće">&#8594;</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CIJENA NEAKTIVNOSTI ===== -->
+  <section id="cijena-neaktivnosti" class="section-wrapper">
+    <div class="section-inner">
+      <div class="inaction-inner fade-in">
+        <span class="inaction-quote-icon">"</span>
+        <p class="inaction-quote">Menadžer koji ne razvija liderske vještine prosječno košta organizaciju 3–5x svoju godišnju platu – kroz loše odluke, visoku fluktuaciju tima i propuštene prilike.</p>
+        <div class="inaction-divider"></div>
+        <p class="inaction-price">Cijena Akademije za lidere: od 1.800 KM.</p>
+        <p class="inaction-note">Jedno mjesto u timu koje ostane predugo prazno košta više.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CIJENA / PRICING ===== -->
+  <section id="cijena" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <span class="section-label">Investicija</span>
+        <h2>Odaberi svoj termin prijave</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card fade-in">
+          <div class="price-card-name">Early Bird</div>
+          <div class="price-card-valid">Važi do 15.09.2026.</div>
+          <div class="price-amount">1.800 <span class="price-currency">KM</span></div>
+          <div class="price-vat">(PDV nije uključen)</div>
+          <ul class="price-features">
+            <li>Ograničen broj mjesta</li>
+            <li>Jednokratna uplata</li>
+          </ul>
+          <a href="#forma" class="btn-primary" style="display:block;text-align:center;padding:14px;">PRIJAVI SE →</a>
+        </div>
+        <div class="price-card featured fade-in">
+          <div class="popular-badge">Najpopularnija</div>
+          <div class="price-card-name">Redovna prijava</div>
+          <div class="price-card-valid">16.09. – 30.09.2026.</div>
+          <div class="price-amount">2.000 <span class="price-currency">KM</span></div>
+          <div class="price-vat">(PDV nije uključen)</div>
+          <ul class="price-features">
+            <li>Jednokratna uplata</li>
+          </ul>
+          <a href="#forma" class="btn-gold" style="display:block;text-align:center;padding:14px;">PRIJAVI SE →</a>
+        </div>
+        <div class="price-card fade-in">
+          <div class="price-card-name">Kasna prijava</div>
+          <div class="price-card-valid">od 1.10.2026.</div>
+          <div class="price-amount">2.500 <span class="price-currency">KM</span></div>
+          <div class="price-vat">(PDV nije uključen)</div>
+          <ul class="price-features">
+            <li>Jednokratna uplata</li>
+          </ul>
+          <a href="#forma" class="btn-primary" style="display:block;text-align:center;padding:14px;">PRIJAVI SE →</a>
+        </div>
+      </div>
+      <p class="price-note-below fade-in">💡 Zainteresovan/a za plaćanje na rate? Kontaktiraj nas: <a href="mailto:info@consultor.ba" style="color:var(--primary);font-weight:700;text-decoration:underline;">info@consultor.ba</a></p>
+    </div>
+  </section>
+
+  <!-- ===== FORMA ===== -->
+  <section id="forma" class="section-wrapper">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <h2>Rezerviši svoje mjesto</h2>
+        <p class="forma-subtitle">Mjesta su ograničena. Sljedeća generacija počinje oktobar 2026.</p>
+      </div>
+
+      <div class="forma-card fade-in">
+        <form id="prijava-forma" novalidate>
+          <div class="form-group">
+            <label for="ime">Ime i prezime <span class="required">*</span></label>
+            <input type="text" id="ime" name="ime" placeholder="Npr. Amira Hodžić" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email adresa <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Npr. amira@kompanija.ba" required />
+          </div>
+          <div class="form-group">
+            <label for="telefon">Broj telefona <span class="required">*</span></label>
+            <input type="tel" id="telefon" name="telefon" placeholder="Npr. +387 61 000 000" required />
+          </div>
+          <div class="form-group">
+            <label for="kompanija">Naziv kompanije</label>
+            <input type="text" id="kompanija" name="kompanija" placeholder="Npr. Moja Kompanija d.o.o." />
+          </div>
+          <div class="form-group">
+            <label for="napomena">Napomena ili pitanje</label>
+            <textarea id="napomena" name="napomena" placeholder="Imate li pitanja ili posebnih zahtjeva?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">POŠALJI PRIJAVU →</button>
+        </form>
+        <div class="form-success" id="form-success">
+          <span class="success-icon">✅</span>
+          <p>Hvala! Tvoja prijava je primljena. Javit ćemo ti se u roku od 24 sata.</p>
+        </div>
+      </div>
+
+      <div class="forma-contact fade-in">
+        <a href="mailto:info@consultor.ba">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          info@consultor.ba
+        </a>
+        <a href="https://www.linkedin.com/company/consultor-ba" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.instagram.com/consultor.ba" target="_blank" rel="noopener">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo">Consul<span>tor</span></div>
+    <a href="https://consultor.ba" target="_blank" rel="noopener" class="footer-link">consultor.ba</a>
+    <p class="footer-copy">© 2026 Consultor. Sva prava zadržana.</p>
+    <p class="footer-privacy">Prikupljamo kontakt informacije isključivo za komunikaciju u vezi sa Consultor uslugama. Vaši podaci neće biti dijeljeni trećim stranama.</p>
+  </footer>
+
+  <!-- ===== MOBILE STICKY CTA ===== -->
+  <div id="mobile-cta" class="hidden">
+    <a href="#forma">PRIJAVI SE NA AKADEMIJU →</a>
+  </div>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== URGENCY BAR =====
+    (function() {
+      var bar = document.getElementById('urgency-bar');
+      var closeBtn = document.getElementById('urgency-close');
+      closeBtn.addEventListener('click', function() {
+        bar.classList.add('hidden');
+      });
+    })();
+
+    // ===== MINI HEADER SCROLL =====
+    (function() {
+      var header = document.getElementById('mini-header');
+      var lastScrollY = 0;
+      var ticking = false;
+
+      function updateHeader() {
+        if (window.scrollY > 100) {
+          header.classList.add('visible');
+        } else {
+          header.classList.remove('visible');
+        }
+        lastScrollY = window.scrollY;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(updateHeader);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    // ===== TESTIMONIALS SLIDER =====
+    (function() {
+      var slides = document.querySelectorAll('.testi-slide');
+      var counter = document.querySelector('.testi-counter .current');
+      var prevBtn = document.getElementById('testi-prev');
+      var nextBtn = document.getElementById('testi-next');
+      var current = 0;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        counter.textContent = String(current + 1).padStart(2, '0');
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+      // keyboard support
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+      });
+    })();
+
+    // ===== MOBILE STICKY CTA =====
+    (function() {
+      var mobileCta = document.getElementById('mobile-cta');
+
+      function updateMobileCta() {
+        if (window.innerWidth <= 768) {
+          if (window.scrollY > 400) {
+            mobileCta.classList.remove('hidden');
+          } else {
+            mobileCta.classList.add('hidden');
+          }
+        } else {
+          mobileCta.classList.add('hidden');
+        }
+      }
+
+      window.addEventListener('scroll', function() {
+        requestAnimationFrame(updateMobileCta);
+      }, { passive: true });
+
+      window.addEventListener('resize', updateMobileCta);
+      updateMobileCta();
+    })();
+
+    // ===== INTERSECTION OBSERVER FADE IN =====
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // ===== ASSESSMENT =====
+    (function() {
+      var scores = {};
+      var currentQ = 1;
+      var totalQ = 7;
+      var labels = ['KOMUNIKACIJA', 'TIMSKI RAD', 'EM. INTELIGENCIJA', 'UPR. VREMENOM', 'RJ. PROBLEMA', 'FEEDBACK', 'RAZVOJ TIMA'];
+
+      var counter = document.getElementById('q-counter');
+      var pct = document.getElementById('q-pct');
+      var progressBar = document.getElementById('progress-bar');
+      var showResultsBtn = document.getElementById('show-results-btn');
+      var assessmentResults = document.getElementById('assessment-results');
+      var questionsContainer = document.getElementById('questions-container');
+      var progressWrap = document.getElementById('progress-wrap');
+
+      function updateProgress(q) {
+        var progress = Math.round(((q - 1) / totalQ) * 100);
+        counter.textContent = 'Pitanje ' + q + ' od ' + totalQ;
+        pct.textContent = progress + '%';
+        progressBar.style.width = progress + '%';
+      }
+
+      function goToQuestion(q) {
+        document.querySelectorAll('.question-block').forEach(function(block) {
+          block.classList.remove('active');
+        });
+        var next = document.querySelector('.question-block[data-q="' + q + '"]');
+        if (next) {
+          next.classList.add('active');
+          updateProgress(q);
+          currentQ = q;
+        }
+      }
+
+      function handleRatingClick(ratingItem, q, val) {
+        var row = ratingItem.closest('.rating-row');
+        row.querySelectorAll('.rating-item').forEach(function(item) {
+          item.classList.remove('selected');
+        });
+        ratingItem.classList.add('selected');
+        scores[q] = parseInt(val, 10);
+
+        if (q < totalQ) {
+          setTimeout(function() {
+            goToQuestion(q + 1);
+          }, 300);
+        } else {
+          // Last question answered
+          setTimeout(function() {
+            showResultsBtn.style.display = 'block';
+          }, 300);
+          updateProgress(totalQ);
+          counter.textContent = 'Pitanje ' + totalQ + ' od ' + totalQ;
+          pct.textContent = Math.round(((totalQ - 1) / totalQ) * 100) + '%';
+        }
+      }
+
+      // Attach click handlers to all rating items
+      document.querySelectorAll('.rating-row').forEach(function(row) {
+        var qNum = parseInt(row.getAttribute('data-q'), 10);
+        row.querySelectorAll('.rating-item').forEach(function(item) {
+          item.addEventListener('click', function() {
+            var val = parseInt(item.getAttribute('data-val'), 10);
+            handleRatingClick(item, qNum, val);
+          });
+        });
+      });
+
+      // Show Results Button
+      showResultsBtn.addEventListener('click', function() {
+        showResults();
+      });
+
+      function showResults() {
+        // Hide questions, show results
+        questionsContainer.style.display = 'none';
+        progressWrap.style.display = 'none';
+        assessmentResults.style.display = 'block';
+
+        var scoreArray = [
+          scores[1] || 1,
+          scores[2] || 1,
+          scores[3] || 1,
+          scores[4] || 1,
+          scores[5] || 1,
+          scores[6] || 1,
+          scores[7] || 1
+        ];
+
+        renderCompetencyList(scoreArray);
+        renderNextStep(scoreArray);
+        drawRadar(scoreArray);
+      }
+
+      function getBadge(score) {
+        if (score <= 2) return { text: 'Prostor za razvoj 🔴', cls: 'badge-low' };
+        if (score === 3) return { text: 'U razvoju 🟡', cls: 'badge-mid' };
+        return { text: 'Snaga 🟢', cls: 'badge-high' };
+      }
+
+      function renderCompetencyList(scores) {
+        var list = document.getElementById('competency-list');
+        list.innerHTML = '';
+        labels.forEach(function(label, i) {
+          var score = scores[i];
+          var badge = getBadge(score);
+          var row = document.createElement('div');
+          row.className = 'competency-row';
+          row.innerHTML =
+            '<span class="comp-name">' + label + '</span>' +
+            '<div class="comp-score-wrap">' +
+              '<span class="comp-score">' + score + '/5</span>' +
+              '<span class="comp-badge ' + badge.cls + '">' + badge.text + '</span>' +
+            '</div>';
+          list.appendChild(row);
+        });
+      }
+
+      function renderNextStep(scoreArray) {
+        var minScore = Math.min.apply(null, scoreArray);
+        var minIndex = scoreArray.indexOf(minScore);
+        var card = document.getElementById('next-step-card');
+        var titleEl = card.querySelector('h4');
+        var textEl = document.getElementById('next-step-text');
+
+        // Sve 4 ili 5 → jak profil
+        var allStrong = scoreArray.every(function(s) { return s >= 4; });
+        if (allStrong) {
+          titleEl.textContent = 'Tvoj liderski profil je jak!';
+          textEl.textContent = 'Tvoji rezultati pokazuju solidne temelje u svim ključnim kompetencijama. Akademija za lidere te vodi na sljedeći nivo – od dobrog lidera do izuzetnog, sa alatima, Harrison procjenom i strategijom prilagođenom tvom timu.';
+          return;
+        }
+
+        titleEl.textContent = 'Tvoj sljedeći korak:';
+
+        // Poruke za skor 1-2 (kritično područje)
+        var messagesLow = [
+          'Tvoji rezultati pokazuju da je komunikacija tvoje ključno područje za razvoj. U Modulu 4 Akademije radimo upravo na tome – od alata za jasnu komunikaciju do rješavanja konflikata u timu.',
+          'Gradnja povjerenja u timu je tvoje ključno razvojno područje. Modul 1 Akademije počinje upravo odatle – od razumijevanja tipova ličnosti do izgradnje visokoučinkovitog tima.',
+          'Tvoji rezultati ukazuju na prostor za rast u emocionalnoj inteligenciji. Modul 3 Akademije je posvećen upravo ovome – jer lider koji razumije sebe razumije i svoj tim.',
+          'Efikasnost i delegiranje su tvoje ključno razvojno područje. Modul 2 i Modul 4 direktno adresiraju ovo – sa konkretnim alatima koje primjenjuješ odmah.',
+          'Strukturirano donošenje odluka je tvoje ključno područje za rast. Modul 2 Akademije daje ti sistem koji funkcioniše čak i pod pritiskom.',
+          'Feedback kultura je tvoje ključno razvojno područje. Modul 3 Akademije te vodi kroz praktične alate za davanje i primanje povratnih informacija koje zaista mijenjaju timsku dinamiku.',
+          'Razvoj članova tima je tvoje ključno razvojno područje. Cijela Akademija je građena oko ovoga – jer lider koji razvija ljude gradi naslijeđe, ne samo rezultate.'
+        ];
+
+        // Poruke za skor 3 (napredak, blaži ton)
+        var messagesMid = [
+          'Komunikacija je područje gdje možeš napredovati. U Modulu 4 Akademije radimo upravo na tome – od alata za jasnu komunikaciju do rješavanja konflikata u timu.',
+          'Gradnja povjerenja u timu je područje gdje možeš napredovati. Modul 1 Akademije počinje upravo odatle – od razumijevanja tipova ličnosti do izgradnje visokoučinkovitog tima.',
+          'Emocionalna inteligencija je područje gdje možeš napredovati. Modul 3 Akademije je posvećen upravo ovome – jer lider koji razumije sebe razumije i svoj tim.',
+          'Upravljanje vremenom i delegiranje su područje gdje možeš napredovati. Modul 2 i Modul 4 direktno adresiraju ovo – sa konkretnim alatima koje primjenjuješ odmah.',
+          'Strukturirano donošenje odluka je područje gdje možeš napredovati. Modul 2 Akademije daje ti sistem koji funkcioniše čak i pod pritiskom.',
+          'Feedback kultura je područje gdje možeš napredovati. Modul 3 Akademije te vodi kroz praktične alate za davanje i primanje povratnih informacija koje zaista mijenjaju timsku dinamiku.',
+          'Razvoj članova tima je područje gdje možeš napredovati. Cijela Akademija je građena oko ovoga – jer lider koji razvija ljude gradi naslijeđe, ne samo rezultate.'
+        ];
+
+        if (minScore === 3) {
+          textEl.textContent = messagesMid[minIndex];
+        } else {
+          textEl.textContent = messagesLow[minIndex];
+        }
+      }
+
+      // ===== RADAR CHART (Canvas API) =====
+      function drawRadar(scoreArray) {
+        var canvas = document.getElementById('radarCanvas');
+        var ctx = canvas.getContext('2d');
+        var size = Math.min(canvas.width, canvas.height);
+        var cx = canvas.width / 2;
+        var cy = canvas.height / 2;
+        var radius = size * 0.34;
+        var numAxes = 7;
+        var startAngle = -Math.PI / 2;
+        var gold = '#D4AF37';
+        var primary = '#1a2744';
+        var gridColor = 'rgba(255,255,255,0.15)';
+
+        // Responsive canvas sizing
+        var containerWidth = canvas.parentElement.offsetWidth;
+        var canvasSize = Math.min(containerWidth, 360);
+        canvas.width = canvasSize;
+        canvas.height = canvasSize;
+        cx = canvasSize / 2;
+        cy = canvasSize / 2;
+        radius = canvasSize * 0.34;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw grid web (5 levels) — alternating fills + strokes
+        for (var level = 5; level >= 1; level--) {
+          var levelRadius = (radius / 5) * level;
+          ctx.beginPath();
+          for (var i = 0; i <= numAxes; i++) {
+            var angle = startAngle + (2 * Math.PI / numAxes) * i;
+            var x = cx + levelRadius * Math.cos(angle);
+            var y = cy + levelRadius * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          // alternating band fills
+          ctx.fillStyle = level % 2 === 0
+            ? 'rgba(255,255,255,0.04)'
+            : 'rgba(255,255,255,0.02)';
+          ctx.fill();
+          ctx.strokeStyle = gridColor;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // Draw axis lines
+        for (var j = 0; j < numAxes; j++) {
+          var axisAngle = startAngle + (2 * Math.PI / numAxes) * j;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + radius * Math.cos(axisAngle), cy + radius * Math.sin(axisAngle));
+          ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        // Animate the data shape
+        var animProgress = 0;
+        var animDuration = 1500;
+        var startTime = null;
+
+        function easeInOut(t) {
+          return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        function animate(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          animProgress = Math.min(elapsed / animDuration, 1);
+          var easedProgress = easeInOut(animProgress);
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Redraw grid with web fills
+          for (var l = 5; l >= 1; l--) {
+            var lr = (radius / 5) * l;
+            ctx.beginPath();
+            for (var k = 0; k <= numAxes; k++) {
+              var ang = startAngle + (2 * Math.PI / numAxes) * k;
+              var gx = cx + lr * Math.cos(ang);
+              var gy = cy + lr * Math.sin(ang);
+              if (k === 0) ctx.moveTo(gx, gy);
+              else ctx.lineTo(gx, gy);
+            }
+            ctx.closePath();
+            ctx.fillStyle = l % 2 === 0 ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)';
+            ctx.fill();
+            ctx.strokeStyle = gridColor;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Redraw axes
+          for (var m = 0; m < numAxes; m++) {
+            var axAng = startAngle + (2 * Math.PI / numAxes) * m;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(cx + radius * Math.cos(axAng), cy + radius * Math.sin(axAng));
+            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = gridColor;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+
+          // Draw data polygon (animated)
+          ctx.beginPath();
+          for (var n = 0; n < numAxes; n++) {
+            var dataAngle = startAngle + (2 * Math.PI / numAxes) * n;
+            var score = scoreArray[n];
+            var dataRadius = (radius / 5) * score * easedProgress;
+            var dx = cx + dataRadius * Math.cos(dataAngle);
+            var dy = cy + dataRadius * Math.sin(dataAngle);
+            if (n === 0) ctx.moveTo(dx, dy);
+            else ctx.lineTo(dx, dy);
+          }
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(212,175,55,0.18)';
+          ctx.fill();
+          ctx.strokeStyle = gold;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+
+          // Draw data points
+          for (var p = 0; p < numAxes; p++) {
+            var ptAngle = startAngle + (2 * Math.PI / numAxes) * p;
+            var ptScore = scoreArray[p];
+            var ptRadius = (radius / 5) * ptScore * easedProgress;
+            var ptX = cx + ptRadius * Math.cos(ptAngle);
+            var ptY = cy + ptRadius * Math.sin(ptAngle);
+            ctx.beginPath();
+            ctx.arc(ptX, ptY, 4, 0, 2 * Math.PI);
+            ctx.fillStyle = gold;
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+
+          // Draw labels
+          var labelRadius = radius + 24;
+          var labelFont = Math.max(9, Math.floor(canvasSize * 0.028));
+          ctx.font = 'bold ' + labelFont + 'px "Raleway", sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,0.7)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          for (var q = 0; q < numAxes; q++) {
+            var lblAngle = startAngle + (2 * Math.PI / numAxes) * q;
+            var lblX = cx + labelRadius * Math.cos(lblAngle);
+            var lblY = cy + labelRadius * Math.sin(lblAngle);
+            ctx.fillText(labels[q], lblX, lblY);
+          }
+
+          if (animProgress < 1) {
+            requestAnimationFrame(animate);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      updateProgress(1);
+    })();
+
+    // ===== FORM SUBMIT =====
+    (function() {
+      var forma = document.getElementById('prijava-forma');
+      var success = document.getElementById('form-success');
+
+      forma.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var ime = document.getElementById('ime').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var telefon = document.getElementById('telefon').value.trim();
+
+        if (!ime || !email || !telefon) {
+          // Simple validation highlight
+          if (!ime) document.getElementById('ime').style.borderColor = '#d94f4f';
+          if (!email) document.getElementById('email').style.borderColor = '#d94f4f';
+          if (!telefon) document.getElementById('telefon').style.borderColor = '#d94f4f';
+          return;
+        }
+
+        forma.style.display = 'none';
+        success.style.display = 'block';
+      });
+
+      // Reset border on input
+      ['ime', 'email', 'telefon'].forEach(function(id) {
+        var el = document.getElementById(id);
+        el.addEventListener('input', function() {
+          el.style.borderColor = '';
+        });
+      });
+    })();
+
+    // ===== SMOOTH SCROLL POLYFILL FOR OLDER BROWSERS =====
+    (function() {
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var target = document.querySelector(anchor.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
