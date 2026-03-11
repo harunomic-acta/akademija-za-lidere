@@ -815,6 +815,126 @@
       line-height: 1.6;
     }
 
+    /* ===== MODULE ROADMAP ===== */
+    .roadmap-heading {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .roadmap-subheading {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .module-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .module-card {
+      background: #1e2d4d;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      padding: 20px;
+      border-left: 4px solid #ef4444;
+    }
+
+    .module-card.priority-low  { border-left-color: #ef4444; }
+    .module-card.priority-mid  { border-left-color: #D4AF37; }
+    .module-card.priority-high { border-left-color: #22c55e; }
+    .module-card.priority-graduation {
+      background: linear-gradient(135deg, #1e2d4d 60%, #2d1f00);
+      border-left-color: #D4AF37;
+    }
+
+    .module-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .module-card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .priority-low  .module-card-label { color: #ef4444; }
+    .priority-mid  .module-card-label { color: #D4AF37; }
+    .priority-high .module-card-label { color: #22c55e; }
+    .priority-graduation .module-card-label { color: #D4AF37; }
+
+    .module-card-title {
+      font-family: 'Bitter', serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .module-card-comps {
+      margin-bottom: 12px;
+    }
+
+    .module-card-comp-row {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      padding: 2px 0;
+    }
+
+    .module-card-desc {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .module-card-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .module-card-badge {
+      display: inline-block;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .priority-low .module-card-badge {
+      background: rgba(239,68,68,0.2);
+      color: #ef4444;
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+
+    .priority-mid .module-card-badge {
+      background: rgba(212,175,55,0.15);
+      color: #D4AF37;
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+
+    .priority-high .module-card-badge {
+      background: rgba(34,197,94,0.15);
+      color: #22c55e;
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+
+    .priority-graduation .module-card-badge {
+      background: rgba(212,175,55,0.15);
+      color: #D4AF37;
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+
     /* ===== STA DOBIJAS ===== */
     #sta-dobijas {
       background: var(--white);
@@ -2113,11 +2233,7 @@
           <div class="result-title">Tvoj liderski profil</div>
           <canvas id="radarCanvas" width="360" height="360"></canvas>
           <div class="competency-list" id="competency-list"></div>
-          <div class="next-step-card" id="next-step-card">
-            <h4>Tvoj sljedeći korak:</h4>
-            <p id="next-step-text"></p>
-          </div>
-          <a href="#forma" class="btn-hero" style="display:block;text-align:center;width:100%;">PRIJAVI SE I POČNI RAZVOJ →</a>
+          <div id="module-roadmap"></div>
         </div>
       </div>
     </div>
@@ -2696,7 +2812,7 @@
         ];
 
         renderCompetencyList(scoreArray);
-        renderNextStep(scoreArray);
+        renderModuleRoadmap(scoreArray);
         drawRadar(scoreArray);
       }
 
@@ -2724,50 +2840,143 @@
         });
       }
 
-      function renderNextStep(scoreArray) {
-        var minScore = Math.min.apply(null, scoreArray);
-        var minIndex = scoreArray.indexOf(minScore);
-        var card = document.getElementById('next-step-card');
-        var titleEl = card.querySelector('h4');
-        var textEl = document.getElementById('next-step-text');
+      // Competency full names (same order as labels / scoreArray)
+      var compFullNames = [
+        'Komunikacija',              // index 0
+        'Timski rad',                // index 1
+        'Emocionalna inteligencija', // index 2
+        'Upravljanje vremenom',      // index 3
+        'Rješavanje problema',       // index 4
+        'Feedback kultura',          // index 5
+        'Razvoj tima'                // index 6
+      ];
 
-        // Sve 4 ili 5 → jak profil
+      // Module definitions with competency index mapping
+      var moduleConfig = [
+        {
+          id: 1,
+          name: 'Modul 1 — Uloga lidera',
+          compIndices: [1],
+          desc: 'Istražuješ svoju ulogu lidera i šta ona zaista znači u praksi. Učiš kako prepoznati različite tipove ličnosti u timu i prilagoditi stil vođenja svakom pojedincu. Gradiš temelje visokoučinkovitog tima od prvog dana.'
+        },
+        {
+          id: 2,
+          name: 'Modul 2 — Konceptualne vještine',
+          compIndices: [3, 4],
+          desc: 'Razvijaš sposobnost strateškog razmišljanja i donošenja odluka pod pritiskom. Učiš kako planirati, delegirati i upravljati rizicima bez da sve radiš sam/a. Odlaziš sa konkretnim sistemom za rješavanje problema koji odmah primjenjuješ.'
+        },
+        {
+          id: 3,
+          name: 'Modul 3 — Interpersonalne vještine',
+          compIndices: [2, 5, 6],
+          desc: 'Razumiješ emocionalnu inteligenciju kao alat za vođenje — ne kao soft skill, nego kao konkretnu prednost. Učiš kako motivisati tim, davati feedback koji mijenja ponašanje i razvijati ljude kroz ciljeve učinka i rasta.'
+        },
+        {
+          id: 4,
+          name: 'Modul 4 — Organizacija i komunikacija',
+          compIndices: [0],
+          desc: 'Ovladavaš vještinama koje svaki lider treba ali rijetko formalno nauči — od vođenja efikasnih sastanaka do prezentacijskih vještina i rješavanja konflikata. Komuniciraš jasno, uvjerljivo i bez nepotrebnog trošenja energije.'
+        },
+        {
+          id: 5,
+          name: 'Modul 5 — Graduation Day',
+          compIndices: [],
+          desc: 'Sve što si naučio/la kroz program prezentiraš kao vlastitu strategiju za svoj tim. Odlaziš s planom koji odmah možeš primijeniti — ne teorijom, nego konkretnim koracima za tvoj tim, tvoju situaciju, tvoj stil vođenja.'
+        }
+      ];
+
+      function getPriorityCls(avg) {
+        if (avg <= 2) return 'priority-low';
+        if (avg < 4)  return 'priority-mid';
+        return 'priority-high';
+      }
+
+      function getPriorityIcon(cls) {
+        if (cls === 'priority-low') return '🔴';
+        if (cls === 'priority-mid') return '🟡';
+        return '🟢';
+      }
+
+      function getPriorityLabel(cls) {
+        if (cls === 'priority-low') return 'Prioritet za razvoj';
+        if (cls === 'priority-mid') return 'U razvoju';
+        return 'Snaga';
+      }
+
+      function renderModuleRoadmap(scoreArray) {
         var allStrong = scoreArray.every(function(s) { return s >= 4; });
-        if (allStrong) {
-          titleEl.textContent = 'Tvoj liderski profil je jak!';
-          textEl.textContent = 'Tvoji rezultati pokazuju solidne temelje u svim ključnim kompetencijama. Akademija za lidere te vodi na sljedeći nivo – od dobrog lidera do izuzetnog, sa alatima, Harrison procjenom i strategijom prilagođenom tvom timu.';
-          return;
-        }
+        var container = document.getElementById('module-roadmap');
 
-        titleEl.textContent = 'Tvoj sljedeći korak:';
+        var heading    = allStrong ? 'Tvoj liderski profil je jak!'  : 'Tvoj razvojni plan:';
+        var subheading = allStrong
+          ? 'Imaš solidne temelje u svim kompetencijama. Akademija te vodi na sljedeći nivo.'
+          : 'Na osnovu tvojih odgovora, ovo su moduli koji ti mogu najviše pomoći:';
+        var ctaTitle = allStrong ? 'Od dobrog lidera do izuzetnog:' : 'Tvoj sljedeći korak:';
 
-        // Poruke za skor 1-2 (kritično područje)
-        var messagesLow = [
-          'Tvoji rezultati pokazuju da je komunikacija tvoje ključno područje za razvoj. U Modulu 4 Akademije radimo upravo na tome – od alata za jasnu komunikaciju do rješavanja konflikata u timu.',
-          'Gradnja povjerenja u timu je tvoje ključno razvojno područje. Modul 1 Akademije počinje upravo odatle – od razumijevanja tipova ličnosti do izgradnje visokoučinkovitog tima.',
-          'Tvoji rezultati ukazuju na prostor za rast u emocionalnoj inteligenciji. Modul 3 Akademije je posvećen upravo ovome – jer lider koji razumije sebe razumije i svoj tim.',
-          'Efikasnost i delegiranje su tvoje ključno razvojno područje. Modul 2 i Modul 4 direktno adresiraju ovo – sa konkretnim alatima koje primjenjuješ odmah.',
-          'Strukturirano donošenje odluka je tvoje ključno područje za rast. Modul 2 Akademije daje ti sistem koji funkcioniše čak i pod pritiskom.',
-          'Feedback kultura je tvoje ključno razvojno područje. Modul 3 Akademije te vodi kroz praktične alate za davanje i primanje povratnih informacija koje zaista mijenjaju timsku dinamiku.',
-          'Razvoj članova tima je tvoje ključno razvojno područje. Cijela Akademija je građena oko ovoga – jer lider koji razvija ljude gradi naslijeđe, ne samo rezultate.'
-        ];
+        // Calculate average score per module (modules 1–4 only)
+        var sortable = moduleConfig.slice(0, 4).map(function(mod) {
+          var sum = mod.compIndices.reduce(function(acc, idx) { return acc + scoreArray[idx]; }, 0);
+          var avg = mod.compIndices.length > 0 ? sum / mod.compIndices.length : 0;
+          return { mod: mod, avg: avg };
+        });
 
-        // Poruke za skor 3 (napredak, blaži ton)
-        var messagesMid = [
-          'Komunikacija je područje gdje možeš napredovati. U Modulu 4 Akademije radimo upravo na tome – od alata za jasnu komunikaciju do rješavanja konflikata u timu.',
-          'Gradnja povjerenja u timu je područje gdje možeš napredovati. Modul 1 Akademije počinje upravo odatle – od razumijevanja tipova ličnosti do izgradnje visokoučinkovitog tima.',
-          'Emocionalna inteligencija je područje gdje možeš napredovati. Modul 3 Akademije je posvećen upravo ovome – jer lider koji razumije sebe razumije i svoj tim.',
-          'Upravljanje vremenom i delegiranje su područje gdje možeš napredovati. Modul 2 i Modul 4 direktno adresiraju ovo – sa konkretnim alatima koje primjenjuješ odmah.',
-          'Strukturirano donošenje odluka je područje gdje možeš napredovati. Modul 2 Akademije daje ti sistem koji funkcioniše čak i pod pritiskom.',
-          'Feedback kultura je područje gdje možeš napredovati. Modul 3 Akademije te vodi kroz praktične alate za davanje i primanje povratnih informacija koje zaista mijenjaju timsku dinamiku.',
-          'Razvoj članova tima je područje gdje možeš napredovati. Cijela Akademija je građena oko ovoga – jer lider koji razvija ljude gradi naslijeđe, ne samo rezultate.'
-        ];
+        // Sort ascending (lowest avg = highest priority)
+        sortable.sort(function(a, b) { return a.avg - b.avg; });
 
-        if (minScore === 3) {
-          textEl.textContent = messagesMid[minIndex];
-        } else {
-          textEl.textContent = messagesLow[minIndex];
-        }
+        // Modul 5 always last
+        sortable.push({ mod: moduleConfig[4], avg: null });
+
+        var html = '<div class="roadmap-heading">' + heading + '</div>';
+        html += '<div class="roadmap-subheading">' + subheading + '</div>';
+        html += '<div class="module-cards">';
+
+        sortable.forEach(function(item) {
+          var mod = item.mod;
+
+          if (mod.id === 5) {
+            html += '<div class="module-card priority-graduation">';
+            html += '<div class="module-card-header"><span class="module-card-label">Završni korak 🎓</span></div>';
+            html += '<div class="module-card-title">' + mod.name + '</div>';
+            html += '<div class="module-card-desc">' + mod.desc + '</div>';
+            html += '<div class="module-card-footer"><span class="module-card-badge">Završni korak 🎓</span></div>';
+            html += '</div>';
+            return;
+          }
+
+          var cls   = allStrong ? 'priority-high' : getPriorityCls(item.avg);
+          var icon  = getPriorityIcon(cls);
+          var label = getPriorityLabel(cls);
+
+          html += '<div class="module-card ' + cls + '">';
+          html += '<div class="module-card-header">';
+          html += '<span>' + icon + '</span>';
+          html += '<span class="module-card-label">' + label + '</span>';
+          html += '</div>';
+          html += '<div class="module-card-title">' + mod.name + '</div>';
+
+          if (mod.compIndices.length > 0) {
+            html += '<div class="module-card-comps">';
+            mod.compIndices.forEach(function(idx) {
+              html += '<div class="module-card-comp-row">' + compFullNames[idx] + ' — ' + scoreArray[idx] + '/5</div>';
+            });
+            html += '</div>';
+          }
+
+          html += '<div class="module-card-desc">' + mod.desc + '</div>';
+          html += '<div class="module-card-footer"><span class="module-card-badge">' + label + '</span></div>';
+          html += '</div>';
+        });
+
+        html += '</div>';
+
+        // CTA card
+        html += '<div class="next-step-card">';
+        html += '<h4>' + ctaTitle + '</h4>';
+        html += '<p>Akademija za lidere radi na svim ovim kompetencijama — kroz 5 praktičnih modula, Harrison Assessment procjenu i strategiju prilagođenu tačno tvom timu i tvojoj situaciji.</p>';
+        html += '</div>';
+        html += '<a href="#forma" class="btn-hero" style="display:block;text-align:center;width:100%;">PRIJAVI SE I POČNI RAZVOJ →</a>';
+
+        container.innerHTML = html;
       }
 
       // ===== RADAR CHART (Canvas API) =====
